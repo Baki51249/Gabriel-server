@@ -35,6 +35,21 @@ app.get("/manifestacao", async (req, res) => {
   res.send(`<ul>${ul}</Ul>`);
 });
 
-mongoose.connect("mongodb+srv://turma0046pmi:jhHSdqqtzCaqOAc5@clusterturma0046.yamifru.mongodb.net/?retryWrites=true&w=majority");
+mongoose.connect("mongodb+srv://gabriel:m0jeba8Ec9yqxkbK@cluster0.lnvstco.mongodb.net/?retryWrites=true&w=majority");
 
-// Restante do seu código
+
+function insertManifestacao(nome, telefone, endereco, descricao, foto) {
+  const dados = new Manifestacao({
+    nome: nome,
+    telefone: telefone,
+    endereco: endereco,
+    descricao: descricao,
+    foto: foto,
+  });
+  dados.save();
+}
+
+async function getManifestacao() {
+  const manifestacao = await Manifestacao.find();
+  return manifestacao;
+}
